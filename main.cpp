@@ -251,21 +251,36 @@ public:
     } //close get() function.
     
 //void append(const LinkedList &other):
-    //adds nodes of other list at end of list.
-    //ListNine.append(ListTen);
-    /*
-    void append(const LinkedList &other)
+    void append(const LinkedList &other) 
+    //other = ListTen.
     {
-        Node *current;
-        current = head;
-        while(current->next != NULL)
+        //part1: reach end of ListNine.
+        Node* current = head;
+        while (current != NULL)
         {
             current = current->next;
         }
-        //at end of first linked list.
-        current->next = other.head;
+        
+        //part2: create new nodes for ListTen
+        //copy data from listTen.
+        //copying listTen and linking copy to first list.
+        //whyy cant we just link the heads lol???
+        
+        int size = other.size(); //3
+        Node* currentOther = other.head; //to traverse.
+        for (int i = 0; i < size; i++) //loop 3 times.
+        {
+            //dynamic allocation:
+            Node* n = new Node;
+            n->next = NULL;
+            n->value = currentOther->value; 
+            //using values from other list
+            current->next = n; //links first list to new first node.
+            current = current->next;
+            currentOther = currentOther->next;
+        }
     } //close append() function.
-     */
+
 //void swap(LinkedList &other):
     //ListOne.swap(ListTwo); calling.
     void swap(LinkedList &other) //swap ptrs
